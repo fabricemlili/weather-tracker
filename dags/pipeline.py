@@ -91,7 +91,7 @@ extract_data_from_url = PythonOperator(
 )
 
 upload_data_from_url = PythonOperator(
-    task_id='preview_data',
+    task_id='upload_data',
     python_callable=upload_data,
     dag=dag
 )
