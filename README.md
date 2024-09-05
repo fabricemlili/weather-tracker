@@ -79,5 +79,5 @@ kubectl delete -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/
 kubectl delete -f dashboard-adminuser.yaml
 kubectl delete -f dashboard-clusterrolebinding.yaml
 helm uninstall airflow  --namespace airflow
-kubectl delete namespace
+kubectl delete namespace airflow
 ```
