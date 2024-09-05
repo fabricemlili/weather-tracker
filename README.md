@@ -114,6 +114,10 @@ It's almost finished setting up. Before to activate the pipeline DAG, you need t
 In the end, you should have something that looks like this:
 ![Capture d’écran du 2024-09-05 18-33-27](https://github.com/user-attachments/assets/820661f8-49c8-4853-8708-1112af4c664b)
 
+Finally, activate the DAG to trigger it and watch your bucket fill up little by little over time (every 15 minutes).
+![Capture d’écran du 2024-09-05 19-23-35](https://github.com/user-attachments/assets/1958c735-d66c-4aef-b00f-63f827a500e9)
+
+
 ## To Reset
 
 ```bash
