@@ -1,6 +1,8 @@
 # Weather Tracker
 This repository provides a pipeline that stores real-time weather data for a chosen location in an [Amazon S3 bucket](https://aws.amazon.com/fr/s3/).
 
+![API weather + airflow in Kube + S3 Bucket drawio](https://github.com/user-attachments/assets/bbd1d3ef-dedc-4852-bb8e-7a19d859f99c)
+
 ## Prerequisites
 To use this repository, you need the following installed locally:
 - [Python 3](https://www.python.org/downloads/)
