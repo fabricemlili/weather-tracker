@@ -1,4 +1,4 @@
-webserverSecretKey: CTGFzSXF6bERXNjVOWXRBTXBDWndZVUNJaFVYZVBVd2g=
+webserverSecretKey: <Put your key there>
 
 dags:
   gitSync:
