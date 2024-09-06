@@ -81,14 +81,15 @@ helm upgrade --install airflow apache-airflow/airflow -n airflow -f airflow-conf
 ```
 ### Airflow Variables
 It's almost finished setting up. Before to activate the pipeline DAG, you need to add the following variables to your [Airflow web server's variables](http://localhost:8080/variable/list/):
-- API_KEY: You can get it subscribing for free at [weatherapi.com](https://www.weatherapi.com/signup.aspx)
-- ACCESS_KEY_ID and SECRET_ACCESS_KEY corresponding to a created access key for a user AWS:
+- **(Optional) CITY**: *By default, it's “Los Angeles,United States of America”.*
+- **API_KEY**: *You can get it subscribing for free at [weatherapi.com](https://www.weatherapi.com/signup.aspx)*
+- **ACCESS_KEY_ID and SECRET_ACCESS_KEY**: *You need to create an access key for a user AWS (see below for details).*
 
-##### 1) Create a [AWS account](https://aws.amazon.com/).
+###### 1) Create a [AWS account](https://aws.amazon.com/).
 
-##### 2) Create a S3 bucket called "weather-tracker-bucket".
+###### 2) Create a S3 bucket called “weather-tracker-bucket”.
 
-##### 3) Create a policy using the following JSON:
+###### 3) Create a policy using the following JSON:
 ```JSON
 {
     "Version": "2012-10-17",
@@ -109,9 +110,9 @@ It's almost finished setting up. Before to activate the pipeline DAG, you need t
 }
 ```
 
-##### 4) Create a user (e.g. “admin-user”) assigning the policy you've just created.
+###### 4) Create a user (e.g. “admin-user”) assigning the policy you've just created.
 
-##### 5) Add an access key and copy-past the values in your [Airflow variables](http://localhost:8080/variable/list/).
+###### 5) Add an access key and copy-past the values in your [Airflow variables](http://localhost:8080/variable/list/).
 
 In the end, you should have something that looks like this:
 ![Capture d’écran du 2024-09-05 18-33-27](https://github.com/user-attachments/assets/820661f8-49c8-4853-8708-1112af4c664b)
@@ -120,7 +121,7 @@ Finally, activate the DAG to trigger it and watch your bucket fill up little by 
 ![Capture d’écran du 2024-09-05 19-23-35](https://github.com/user-attachments/assets/1958c735-d66c-4aef-b00f-63f827a500e9)
 
 
-## To Reset
+## Additional Code Snippets
 
 ```bash
 python3 -m venv venv

@@ -6,11 +6,13 @@ from airflow.models import Variable
 ACCESS_KEY_ID=Variable.get("ACCESS_KEY_ID")
 SECRET_ACCESS_KEY=Variable.get("SECRET_ACCESS_KEY")
 API_KEY=Variable.get("API_KEY")
+CITY=Variable.get("CITY")
 
 def extract_data(**kwargs):
     import requests
-    city = 'San%20Juan,Argentina'
-    url = f'https://api.weatherapi.com/v1/current.json?key={API_KEY}&q={city}'
+    if not CITY:
+        CITY="Los Angeles,United States of America"
+    url = f'https://api.weatherapi.com/v1/current.json?key={API_KEY}&q={CITY}'
 
     try:
         response = requests.get(url)
