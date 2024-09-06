@@ -46,9 +46,7 @@ kubectl config use-context docker-desktop
 
 Apply the configurations: 
 ```bash
-kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/aio/deploy/recommended.yaml
-kubectl apply -f dashboard-adminuser.yaml
-kubectl apply -f dashboard-clusterrolebinding.yaml
+kubectl apply -f k8s/
 ```
 Run commands to get a token and run the dashboard:
 ```bash
