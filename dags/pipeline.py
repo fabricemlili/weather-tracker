@@ -3,14 +3,13 @@ from airflow import DAG
 from airflow.operators.python import PythonOperator
 from airflow.models import Variable
 
-ACCESS_KEY_ID=Variable.get("ACCESS_KEY_ID")
-SECRET_ACCESS_KEY=Variable.get("SECRET_ACCESS_KEY")
-API_KEY=Variable.get("API_KEY")
-CITY=Variable.get("CITY")
 
 def extract_data(**kwargs):
     import requests
-    if not CITY:
+    API_KEY=Variable.get("API_KEY")
+    try:
+        CITY=Variable.get("CITY")
+    except:
         CITY="Los Angeles,United States of America"
     url = f'https://api.weatherapi.com/v1/current.json?key={API_KEY}&q={CITY}'
 
@@ -33,6 +32,9 @@ def upload_data(**kwargs):
     import pandas as pd
     import boto3
     from io import StringIO
+    ACCESS_KEY_ID=Variable.get("ACCESS_KEY_ID")
+    SECRET_ACCESS_KEY=Variable.get("SECRET_ACCESS_KEY")
+
     weather_data = kwargs['ti'].xcom_pull(key='weather_data', task_ids='extract_data')
     df = pd.DataFrame({
     "Location": [weather_data['location']['name']],
@@ -47,17 +49,14 @@ def upload_data(**kwargs):
     "UV Index": [weather_data['current']['uv']],
     "Pressure (mb)": [weather_data['current']['pressure_mb']]
     })
-
     print(df)
 
     # Convert DataFrame to CSV
     csv_buffer = StringIO()
     df.to_csv(csv_buffer, index=False)
 
-    s3_client = boto3.client('s3', aws_access_key_id = ACCESS_KEY_ID, aws_secret_access_key = SECRET_ACCESS_KEY)
-
     file_path = f"{df['Location'].values[0]}/{df['Recorded Time'].values[0]}.csv"
-
+    s3_client = boto3.client('s3', aws_access_key_id = ACCESS_KEY_ID, aws_secret_access_key = SECRET_ACCESS_KEY)
     try:
         s3_client.put_object(
             Bucket='weather-tracker-bucket',
@@ -75,7 +74,7 @@ def upload_data(**kwargs):
 default_args = {
     'owner': 'airflow',
     'start_date': datetime.now() - timedelta(hours=1),
-    'retries': 3,  
+    'retries': 1,  
     'retry_delay': timedelta(seconds=30),  
     'catchup': False
 }
