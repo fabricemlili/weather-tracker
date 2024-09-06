@@ -133,3 +133,9 @@ kubectl delete -f dashboard-clusterrolebinding.yaml
 helm uninstall airflow  --namespace airflow
 kubectl delete namespace airflow
 ```
+
+## Author
+Fabrice Mlili
+
+## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
