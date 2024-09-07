@@ -74,7 +74,7 @@ def upload_data(**kwargs):
 default_args = {
     'owner': 'airflow',
     'start_date': datetime.now() - timedelta(hours=1),
-    'retries': 1,  
+    'retries': 3,  
     'retry_delay': timedelta(seconds=30),  
     'catchup': False
 }
