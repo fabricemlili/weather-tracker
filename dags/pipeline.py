@@ -10,8 +10,8 @@ def extract_data(**kwargs):
     # Get cities from Variable or set default cities
     try:
         CITY = Variable.get("CITY")
-        CITY2 = Variable.get("CITY1")
-        CITY3 = Variable.get("CITY2")
+        CITY2 = Variable.get("CITY2")
+        CITY3 = Variable.get("CITY3")
         CITIES=[CITY,CITY2,CITY3]
     except:
         CITIES = ["Los Angeles,United States of America", "New York,United States of America", "San Francisco,United States of America"]
