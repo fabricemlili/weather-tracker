@@ -1,10 +1,10 @@
-webserverSecretKey: <Put your key there>
+webserverSecretKey: OTAza3dFaVhjTjhhTThDczdXY2R1U1ZQazZjblBZTVI=
 
 dags:
   gitSync:
     enabled: true
     repo: https://github.com/fabricemlili/weather-tracker.git
-    branch: main
+    branch: more-cities-option
     rev: HEAD
     depth: 1
     maxFailures: 0
