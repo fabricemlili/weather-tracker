@@ -1,4 +1,4 @@
-webserverSecretKey: OTAza3dFaVhjTjhhTThDczdXY2R1U1ZQazZjblBZTVI=
+webserverSecretKey: THNHR1dzMnc1QVo3aWNpOFlzcTFGcjhXNXFyTXRNZ0g=
 
 dags:
   gitSync:
